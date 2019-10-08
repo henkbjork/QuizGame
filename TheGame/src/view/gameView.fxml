@@ -15,7 +15,7 @@
       <Pane prefHeight="500.0" prefWidth="225.0" style="-fx-background-color: #ef6c33;">
          <children>
             <Separator layoutX="222.0" orientation="VERTICAL" prefHeight="500.0" />
-            <VBox layoutX="25.0" layoutY="80.0" spacing="40.0">
+            <VBox layoutX="25.0" layoutY="100.0" spacing="40.0">
                <children>
                   <Label fx:id="player1Label" textFill="#0c4a60">
                      <font>
@@ -54,11 +54,6 @@
                   <Font name="Showcard Gothic" size="31.0" />
                </font>
             </Label>
-            <Button layoutX="16.0" layoutY="445.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="34.0" prefWidth="193.0" style="-fx-background-color: #0ea7b5;" text="Give Point's" textFill="#0c4a60">
-               <font>
-                  <Font name="Showcard Gothic" size="18.0" />
-               </font>
-            </Button>
          </children>
       </Pane>
       <Label layoutX="260.0" layoutY="23.0" text="Question:" textFill="#0c4a60">

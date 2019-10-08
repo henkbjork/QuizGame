@@ -15,6 +15,7 @@ public class GameController implements Initializable {
     private List<Label> playerLabels;
     private List<Player> players;
     private String correctAnswer;
+    private int index = 0;
 
      void setMain(Main main) {
          this.main = main;
@@ -65,6 +66,53 @@ public class GameController implements Initializable {
     }
 
     @FXML
+    public void handleNewQuestion() {
+         setLabelStyleToNormal();
+         changePlayerTurn();
+         List<String> questionAndAnswer = QuestionAndAnswer.getQuestionAndAnswer();
+         correctAnswer = questionAndAnswer.get(1);
+         questionLabel.setText(questionAndAnswer.get(0));
+         Label[] labels = new Label[4];
+         labels[0] = answerA;
+         labels[1] = answerB;
+         labels[2] = answerC;
+         labels[3] = answerD;
+
+         questionAndAnswer.remove(0); //deleting the question so just the answers remain in the list
+         List<String> randomQuestion = shuffleArray(questionAndAnswer);
+         for(int i=0; i<labels.length; i++) {
+             labels[i].setText(randomQuestion.get(i));
+         }
+    }
+
+    private void changePlayerTurn() {
+        System.out.println("playerlabel size: " + playerLabels.size() + ", and index: " + index);
+         playerLabels.get(index).setUnderline(true);
+         index++;
+         if(index >= players.size()) {
+             index = 0;
+         }
+    }
+
+    private void setLabelStyleToNormal() {
+         answerA.setStyle(null);
+         answerB.setStyle(null);
+         answerC.setStyle(null);
+         answerD.setStyle(null);
+         player1Label.setUnderline(false);
+         player2Label.setUnderline(false);
+         player3Label.setUnderline(false);
+         player4Label.setUnderline(false);
+         player5Label.setUnderline(false);
+         player6Label.setUnderline(false);
+    }
+
+    private List<String> shuffleArray(List<String> arrList){
+        Collections.shuffle(arrList);
+        return arrList;
+    }
+
+    @FXML
     public void handleAnswerClick(MouseEvent event) {
         if(event.toString().contains(correctAnswer)) {
             updateScore();
@@ -73,28 +121,6 @@ public class GameController implements Initializable {
             Label label = (Label) event.getSource();
             label.setStyle("-fx-background-color: #da4a3b");
             handleShowAnswer();
-        }
-    }
-
-    @FXML
-    public void handleNewQuestion() {
-        answerA.setStyle(null);
-        answerB.setStyle(null);
-        answerC.setStyle(null);
-        answerD.setStyle(null);
-        List<String> questionAndAnswer = QuestionAndAnswer.getQuestionAndAnswer();
-        correctAnswer = questionAndAnswer.get(1);
-        questionLabel.setText(questionAndAnswer.get(0));
-        Label[] labels = new Label[4];
-        labels[0] = answerA;
-        labels[1] = answerB;
-        labels[2] = answerC;
-        labels[3] = answerD;
-
-        questionAndAnswer.remove(0);
-        List<String> randomQuestion = shuffleArray(questionAndAnswer);
-        for(int i=0; i<labels.length; i++) {
-            labels[i].setText(randomQuestion.get(i));
         }
     }
 
@@ -109,10 +135,5 @@ public class GameController implements Initializable {
         } else if(answerD.toString().contains(correctAnswer)) {
             answerD.setStyle("-fx-background-color: #bdf27e");
         }
-    }
-
-    private List<String> shuffleArray(List<String> arrList){
-        Collections.shuffle(arrList);
-        return arrList;
     }
 }
