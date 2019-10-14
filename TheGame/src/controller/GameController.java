@@ -2,9 +2,12 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import modell.*;
+
 import java.net.URL;
 import java.util.*;
 
@@ -35,33 +38,14 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    void handleFiftyFiftyButton() {
-
-    }
-
-    @FXML
-    void handleQuitButton() {
-        main.startWindow();
-    }
-
-    @FXML
-    void handleSaveButton() {
-
-    }
-
-    private void playerTurn() {
-
-    }
-
-    @FXML
     private void setPlayerNameAndScore() {
-         for(int i=0; i<players.size(); i++) {
+        for(int i=0; i<players.size(); i++) {
             playerLabels.get(i).setText(players.get(i).getName() + ": " + players.get(i).getScore());
-         }
+        }
     }
 
     private void updateScore() {
-         players.get(0).changeScore();
+         players.get(index).changeScore();
          setPlayerNameAndScore();
     }
 
@@ -83,15 +67,11 @@ public class GameController implements Initializable {
          for(int i=0; i<labels.length; i++) {
              labels[i].setText(randomQuestion.get(i));
          }
+
     }
 
     private void changePlayerTurn() {
-        System.out.println("playerlabel size: " + playerLabels.size() + ", and index: " + index);
          playerLabels.get(index).setUnderline(true);
-         index++;
-         if(index >= players.size()) {
-             index = 0;
-         }
     }
 
     private void setLabelStyleToNormal() {
@@ -122,6 +102,10 @@ public class GameController implements Initializable {
             label.setStyle("-fx-background-color: #da4a3b");
             handleShowAnswer();
         }
+        index++;
+        if(index >= players.size()) {
+            index = 0;
+        }
     }
 
     @FXML
@@ -135,5 +119,26 @@ public class GameController implements Initializable {
         } else if(answerD.toString().contains(correctAnswer)) {
             answerD.setStyle("-fx-background-color: #bdf27e");
         }
+    }
+
+    @FXML
+    void handleFiftyFiftyButton() {
+
+    }
+
+    @FXML
+    void handleQuitButton() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Warning");
+        alert.setHeaderText("If you quit without saving your game will be lost.");
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if(buttonType.get() == ButtonType.OK) {
+            main.startWindow();
+        }
+    }
+
+    @FXML
+    void handleSaveButton() {
+        SaveAndLoad.saveToFile();
     }
 }

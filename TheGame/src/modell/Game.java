@@ -1,4 +1,6 @@
 package modell;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable {
 }

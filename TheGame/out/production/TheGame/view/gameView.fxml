@@ -15,7 +15,7 @@
       <Pane prefHeight="500.0" prefWidth="225.0" style="-fx-background-color: #ef6c33;">
          <children>
             <Separator layoutX="222.0" orientation="VERTICAL" prefHeight="500.0" />
-            <VBox layoutX="25.0" layoutY="80.0" spacing="40.0">
+            <VBox layoutX="25.0" layoutY="100.0" spacing="40.0">
                <children>
                   <Label fx:id="player1Label" textFill="#0c4a60">
                      <font>

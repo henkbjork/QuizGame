@@ -1,9 +1,10 @@
 package modell;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiPlayerGame extends Game {
+public class MultiPlayerGame extends Game implements Serializable {
     private static List<Player> players;
     private static String difficulty;
     private static String category;

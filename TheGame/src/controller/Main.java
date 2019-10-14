@@ -8,10 +8,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class Main extends Application {
+public class Main extends Application{
 
     private Stage primaryStage;
     private AnchorPane pane;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -48,10 +52,5 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

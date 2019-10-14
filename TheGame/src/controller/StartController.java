@@ -6,6 +6,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import modell.MultiPlayerGame;
+import modell.SaveAndLoad;
 
 public class StartController {
 
@@ -60,7 +61,12 @@ public class StartController {
     }
 
     @FXML
-    public void startGameButton() {
+    public void handleStartGameButton() {
         main.gameWindow();
+    }
+
+    @FXML
+    public void handleLoadGameButton() {
+        SaveAndLoad.loadFile();
     }
 }
