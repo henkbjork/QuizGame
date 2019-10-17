@@ -4,13 +4,20 @@ import java.io.Serializable;
 
 public class Player implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    private String name;
+    private static final long serialVersionUID = 2L;
     private int score;
+    private String name;
+
+    public Player() {
+    }
 
     public Player(String name) {
         this.name = name;
-        score = 0;
+    }
+
+    public Player(String name, int score) {
+        this.name = name;
+        this.score = score;
     }
 
     public String getName() {
@@ -22,7 +29,7 @@ public class Player implements Serializable {
     }
 
     public void changeScore() {
-        score += 10;
+        score += 1;
     }
 
     @Override

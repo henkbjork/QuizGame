@@ -31,7 +31,7 @@
                     </font>
                 </Label>
                 <Separator layoutX="498.0" orientation="VERTICAL" prefHeight="514.0" prefWidth="5.0" />
-            <TextField fx:id="playerNameField" layoutX="36.0" layoutY="144.0" opacity="0.5" prefHeight="30.0" prefWidth="226.0" promptText="Player Name" style="-fx-background-color: #e1dddb;">
+            <TextField fx:id="playerNameField" layoutX="36.0" layoutY="144.0" onKeyPressed="#handleKeyPressed" opacity="0.5" prefHeight="30.0" prefWidth="226.0" promptText="Player Name" style="-fx-background-color: #e1dddb;">
                <font>
                   <Font name="Showcard Gothic" size="13.0" />
                </font>

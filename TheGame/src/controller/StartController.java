@@ -1,12 +1,15 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import modell.FileManager;
 import modell.MultiPlayerGame;
-import modell.SaveAndLoad;
 
 public class StartController {
 
@@ -22,13 +25,20 @@ public class StartController {
 
     @FXML
     public void handleAddPlayer() {
-        if(MultiPlayerGame.getPlayers().size() < 6) {
+        if(MultiPlayerGame.getQuizPlayers().size() < 6) {
             multiPlayerGame.addPlayer(playerNameField.getText());
             playerNameField.clear();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Max 6 players");
             alert.showAndWait();
+        }
+    }
+
+    @FXML
+    public void handleKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER) {
+            handleAddPlayer();
         }
     }
 
@@ -62,11 +72,13 @@ public class StartController {
 
     @FXML
     public void handleStartGameButton() {
+        handleCategory();
+        handleDifficulty();
         main.gameWindow();
     }
 
     @FXML
     public void handleLoadGameButton() {
-        SaveAndLoad.loadFile();
+        FileManager.loadFromFile();
     }
 }

@@ -2,6 +2,7 @@ package modell;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,20 +22,20 @@ public abstract class QuestionAndAnswer {
         //getting question
         List<String> listQuestion;
         listQuestion = getKeyValue(str, "question");
-        for(String s : listQuestion) {
+        for (String s : listQuestion) {
             questionAndAnswer.add(0, decodeString(s));
         }
         //getting answers
         List<String> correctAnswer;
         correctAnswer = getKeyValue(str, "correct_answer");
-        for(String s : correctAnswer) {
+        for (String s : correctAnswer) {
             questionAndAnswer.add(1, decodeString(s));
         }
         List<String> IncorrectAnswer;
         IncorrectAnswer = getKeyValue(str, "incorrect_answers");
-        String[] answers = IncorrectAnswer.get(0).substring(2, IncorrectAnswer.get(0).length()-2).split(",");
-        for(int i=0; i<answers.length; i++) {
-            questionAndAnswer.add(i+2, decodeString(answers[i].replace("\"", "")));
+        String[] answers = IncorrectAnswer.get(0).substring(2, IncorrectAnswer.get(0).length() - 2).split(",");
+        for (int i = 0; i < answers.length; i++) {
+            questionAndAnswer.add(i + 2, decodeString(answers[i].replace("\"", "")));
         }
         return questionAndAnswer;
     }
@@ -42,13 +43,13 @@ public abstract class QuestionAndAnswer {
     private static String apiString() {
         StringBuilder sb = new StringBuilder();
         sb.append("https://opentdb.com/api.php?amount=1&category=");
-        if(MultiPlayerGame.getCategory() == null) {
+        if (MultiPlayerGame.getCategory() == null) {
             sb.append("");
         } else {
             sb.append(MultiPlayerGame.getCategory());
         }
         sb.append("&difficulty=");
-        if(MultiPlayerGame.getDifficulty() == null) {
+        if (MultiPlayerGame.getDifficulty() == null) {
             sb.append("easy");
         } else {
             sb.append(MultiPlayerGame.getDifficulty());
@@ -57,7 +58,7 @@ public abstract class QuestionAndAnswer {
         return sb.toString();
     }
 
-    private static String apiCall()  {
+    private static String apiCall() {
         HttpsURLConnection con;
         BufferedReader in = null;
         StringBuilder response = new StringBuilder();
@@ -87,7 +88,7 @@ public abstract class QuestionAndAnswer {
     private static List<String> getKeyValue(String jsonArrayStr, String key) {
         JSONArray jsonArray = new JSONArray(jsonArrayStr);
         return IntStream.range(0, jsonArray.length())
-                .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString(key))
+                .mapToObj(index -> ((JSONObject) jsonArray.get(index)).optString(key))
                 .collect(Collectors.toList());
     }
 

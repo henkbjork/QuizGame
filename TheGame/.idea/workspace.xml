@@ -2,22 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../GameObjective.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GameObjectives.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../GameObjectives.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SavedGames/asdasd.ser" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/controller/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/controller/StartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/controller/StartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/modell/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/Game.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/MultiPlayerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/modell/MultiPlayerGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/modell/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheGame/view/gameView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/view/gameView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/QuestionAndAnswer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/modell/QuestionAndAnswer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/SaveAndLoad.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/view/startView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/view/startView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/StartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modell/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modell/Game.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modell/MultiPlayerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/MultiPlayerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modell/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modell/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/QuizPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modell/QuestionAndAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/QuestionAndAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modell/SaveAndLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/startView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/startView.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -222,6 +224,8 @@
       <workItem from="1570624681244" duration="1439000" />
       <workItem from="1570634944005" duration="6269000" />
       <workItem from="1571037005872" duration="10352000" />
+      <workItem from="1571073297791" duration="27930000" />
+      <workItem from="1571326047952" duration="4070000" />
     </task>
     <servers />
   </component>
