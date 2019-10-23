@@ -2,10 +2,11 @@ package controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import modell.FileManager;
+
 import java.io.IOException;
 
 public class Main extends Application{
@@ -30,6 +31,7 @@ public class Main extends Application{
             Scene scene = new Scene(pane);
             StartController startController = loader.getController();
             startController.setMain(this);
+            primaryStage.setTitle("The Game - A quiz game");
             primaryStage.setResizable(false);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -46,6 +48,7 @@ public class Main extends Application{
             Scene scene = new Scene(pane);
             GameController gameController = loader.getController();
             gameController.setMain(this);
+            primaryStage.setTitle("The Game - A quiz game");
             primaryStage.setResizable(false);
             primaryStage.setScene(scene);
             primaryStage.show();

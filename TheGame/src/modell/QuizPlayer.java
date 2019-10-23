@@ -2,20 +2,21 @@ package modell;
 
 import java.io.Serializable;
 
-public class QuizPlayer extends Player implements Serializable {
+public class QuizPlayer implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private String name;
     private int score;
 
     public QuizPlayer() {
     }
 
     public QuizPlayer(String name) {
-        super(name);
+        this(name, 0);
     }
 
     public QuizPlayer(String name, int score) {
-        super(name);
+        this.name = name;
         this.score = score;
     }
 
@@ -27,8 +28,16 @@ public class QuizPlayer extends Player implements Serializable {
         }
     }
 
-    @Override
+    public String getName() {
+        return name;
+    }
+
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Score: " + score;
     }
 }

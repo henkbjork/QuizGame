@@ -1,16 +1,14 @@
 package modell;
 
-import controller.Main;
 import javafx.stage.FileChooser;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class FileManager {
 
-    private static Main main;
-
-    public static void saveToFile() {
+    public static void saveToFile(int playerLabelIndex) {
         File fileDir = new File("./SavedGames");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save file");
@@ -20,14 +18,14 @@ public abstract class FileManager {
         File savedFile = fileChooser.showSaveDialog(null);
 
         if(savedFile != null) {
-            writeToFile(savedFile);
+            writeToFile(savedFile, playerLabelIndex);
             System.out.println("File saved: " + savedFile.toString());
         } else {
             System.out.println("File save cancelled.");
         }
     }
 
-    private static void writeToFile(File savedFile) {
+    private static void writeToFile(File savedFile, int playerLabelIndex) {
         List<Object> objectsToSave = new ArrayList<>();
         objectsToSave.add(0, MultiPlayerGame.getCategory());
         objectsToSave.add(1, MultiPlayerGame.getDifficulty());
@@ -44,7 +42,7 @@ public abstract class FileManager {
         }
     }
 
-    public static void loadFromFile() {
+    public static MultiPlayerGame loadFromFile() {
         File fileDir = new File("./SavedGames");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open file");
@@ -53,7 +51,7 @@ public abstract class FileManager {
 
         if(openedFile != null) {
             try {
-                readFromFile(openedFile);
+                return new MultiPlayerGame(Objects.requireNonNull(readFromFile(openedFile)));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,10 +59,11 @@ public abstract class FileManager {
         } else {
             System.out.println("File open cancelled");
         }
+        return null;
     }
 
-    private static void readFromFile(File openedFile) throws IOException {
-        List<Object> loadedFromFile = new ArrayList<>();
+    private static MultiPlayerGame readFromFile(File openedFile) throws IOException {
+        List<Object> loadedFromFile;
         List<QuizPlayer> players = new ArrayList<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(openedFile))) {
             loadedFromFile = (ArrayList<Object>) ois.readObject();
@@ -77,19 +76,10 @@ public abstract class FileManager {
                 System.out.println(loadedFromFile.get(i));
             }
             System.out.println("loaded file size: " + loadedFromFile.size());
-            loadMultiPlayerGame(players, category, difficulty);
+            return new MultiPlayerGame(players, category, difficulty);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void loadMultiPlayerGame(List<QuizPlayer> players, String category, String difficulty) {
-        MultiPlayerGame multiPlayerGame = new MultiPlayerGame();
-        multiPlayerGame.setCategory(category);
-        multiPlayerGame.setDifficulty(difficulty);
-        for(QuizPlayer player : players) {
-            multiPlayerGame.addPlayer(player.getName(), player.getScore());
-        }
-        main.gameWindow();
+        return null;
     }
 }

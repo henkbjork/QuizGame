@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -12,8 +13,8 @@ import java.util.*;
 
 public class GameController implements Initializable {
 
-    @FXML
-    private Label questionLabel, answerA, answerB, answerC, answerD, player1Label, player2Label, player3Label, player4Label, player5Label, player6Label;
+    @FXML private Label questionLabel, answerA, answerB, answerC, answerD, player1Label, player2Label, player3Label, player4Label, player5Label, player6Label;
+    @FXML private Button saveButton, fiftyfiftyBtn, newQuestionButton;
     private Main main;
     private static List<Label> playerLabels;
     private List<QuizPlayer> quizPlayers;
@@ -22,11 +23,13 @@ public class GameController implements Initializable {
     private int playerLabelIndex = 0;
     private boolean fiftyFiftyButton = false;
 
-    public void setMain(Main main) {
+    public Main setMain(Main main) {
         this.main = main;
+        return main;
     }
 
     @Override
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         quizPlayers = MultiPlayerGame.getQuizPlayers();
         playerLabels = new ArrayList<>();
@@ -53,7 +56,21 @@ public class GameController implements Initializable {
 
     private void updateScore() {
         quizPlayers.get(playerLabelIndex).changeScore(fiftyFiftyButton);
+        if(quizPlayers.get(playerLabelIndex).getScore() >= 100) {
+            playerLabels.get(playerLabelIndex).setUnderline(false);
+            playerLabels.get(playerLabelIndex).setStyle("-fx-border-color: #008000; -fx-border-radius: 50px; -fx-border-width: 10px; -fx-padding: 10px");
+            disableButton();
+        }
         setPlayerNameAndScore();
+    }
+
+    private void disableButton() {
+        for(Label answer : answers) {
+            answer.setDisable(true);
+        }
+        newQuestionButton.setDisable(true);
+        fiftyfiftyBtn.setDisable(true);
+        saveButton.setDisable(true);
     }
 
     @FXML
@@ -112,6 +129,10 @@ public class GameController implements Initializable {
         for (Label answerLabel : answers) {
             answerLabel.setDisable(true);
         }
+        changePlayerIndex();
+    }
+
+    private void changePlayerIndex() {
         playerLabelIndex++;
         if (playerLabelIndex >= quizPlayers.size()) {
             playerLabelIndex = 0;
@@ -158,6 +179,6 @@ public class GameController implements Initializable {
 
     @FXML
     public void handleSaveButton() {
-        FileManager.saveToFile();
+        FileManager.saveToFile(playerLabelIndex);
     }
 }
