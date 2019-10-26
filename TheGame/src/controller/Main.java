@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import modell.FileManager;
-
 import java.io.IOException;
 
 public class Main extends Application{
@@ -48,6 +46,38 @@ public class Main extends Application{
             Scene scene = new Scene(pane);
             GameController gameController = loader.getController();
             gameController.setMain(this);
+            primaryStage.setTitle("The Game - A quiz game");
+            primaryStage.setResizable(false);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void winnerWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/winnerView.fxml"));
+            pane = loader.load();
+            Scene scene = new Scene(pane);
+            WinnerController winnerController = loader.getController();
+            winnerController.setMain(this);
+            primaryStage.setTitle("The Game - A quiz game");
+            primaryStage.setResizable(false);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void rulesWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/rulesView.fxml"));
+            pane = loader.load();
+            Scene scene = new Scene(pane);
+            RulesController rulesController = loader.getController();
+            rulesController.setMain(this);
             primaryStage.setTitle("The Game - A quiz game");
             primaryStage.setResizable(false);
             primaryStage.setScene(scene);

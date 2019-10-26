@@ -2,24 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../GameObjectives.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../GameObjectives.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheGame/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SavedGames/re.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SavedGames/test.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SavedGames/testing.ser" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/controller/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/controller/StartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/controller/StartController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/modell/FileManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/MultiPlayerGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/modell/MultiPlayerGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/QuestionAndAnswer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/modell/QuestionAndAnswer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TheGame/modell/QuizPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/modell/QuizPlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TheGame/view/gameView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TheGame/view/gameView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/StartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modell/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modell/MultiPlayerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/MultiPlayerGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modell/QuestionAndAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/QuestionAndAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modell/QuizPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modell/QuizPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/gameView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/startView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/startView.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +103,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../json-20180813.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/view" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -115,6 +111,9 @@
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bjork\Desktop\Java\Teknikhögskolan\Projekt Quiz\TheGame\src\view" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\bjork\Desktop\Java\Teknikhögskolan\Projekt Quiz\TheGame\src\view" />
     </key>
@@ -234,6 +233,8 @@
       <workItem from="1571826966574" duration="30000" />
       <workItem from="1571836697592" duration="486000" />
       <workItem from="1571855509243" duration="277000" />
+      <workItem from="1571856893331" duration="1647000" />
+      <workItem from="1572088861236" duration="6469000" />
     </task>
     <servers />
   </component>

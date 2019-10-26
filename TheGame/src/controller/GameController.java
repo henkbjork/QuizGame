@@ -14,7 +14,7 @@ import java.util.*;
 public class GameController implements Initializable {
 
     @FXML private Label questionLabel, answerA, answerB, answerC, answerD, player1Label, player2Label, player3Label, player4Label, player5Label, player6Label;
-    @FXML private Button saveButton, fiftyfiftyBtn, newQuestionButton;
+    @FXML private Button saveButton, fiftyFiftyBtn, newQuestionButton;
     private Main main;
     private static List<Label> playerLabels;
     private List<QuizPlayer> quizPlayers;
@@ -56,9 +56,8 @@ public class GameController implements Initializable {
 
     private void updateScore() {
         quizPlayers.get(playerLabelIndex).changeScore(fiftyFiftyButton);
-        if(quizPlayers.get(playerLabelIndex).getScore() >= 100) {
-            playerLabels.get(playerLabelIndex).setUnderline(false);
-            playerLabels.get(playerLabelIndex).setStyle("-fx-border-color: #008000; -fx-border-radius: 50px; -fx-border-width: 10px; -fx-padding: 10px");
+        if(quizPlayers.get(playerLabelIndex).getScore() >= 50) {
+            main.winnerWindow();
             disableButton();
         }
         setPlayerNameAndScore();
@@ -69,7 +68,7 @@ public class GameController implements Initializable {
             answer.setDisable(true);
         }
         newQuestionButton.setDisable(true);
-        fiftyfiftyBtn.setDisable(true);
+        fiftyFiftyBtn.setDisable(true);
         saveButton.setDisable(true);
     }
 
@@ -179,6 +178,6 @@ public class GameController implements Initializable {
 
     @FXML
     public void handleSaveButton() {
-        FileManager.saveToFile(playerLabelIndex);
+        FileManager.saveToFile();
     }
 }

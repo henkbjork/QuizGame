@@ -1,12 +1,14 @@
 package controller;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
+import javafx.stage.Stage;
 import modell.FileManager;
 import modell.MultiPlayerGame;
 
@@ -26,7 +28,7 @@ public class StartController {
 
     @FXML
     public void handleAddPlayer() {
-        if(multiPlayerGame.getQuizPlayers().size() < 6) {
+        if(MultiPlayerGame.getQuizPlayers().size() < 6) {
             multiPlayerGame.addPlayer(playerNameField.getText());
             playerNameField.clear();
         } else {
@@ -78,9 +80,25 @@ public class StartController {
 
     @FXML
     public void handleLoadGameButton() {
-        MultiPlayerGame loadedGame = new MultiPlayerGame(Objects.requireNonNull(FileManager.loadFromFile()));
-        multiPlayerGame.setDifficulty(loadedGame.getDifficulty());
-        multiPlayerGame.setCategory(loadedGame.getCategory());
+        new MultiPlayerGame(Objects.requireNonNull(FileManager.loadFromFile()));
+        multiPlayerGame.setDifficulty(MultiPlayerGame.getDifficulty());
+        multiPlayerGame.setCategory(MultiPlayerGame.getCategory());
         main.gameWindow();
+    }
+
+    @FXML
+    void handleMenuLoadGame() {
+        handleLoadGameButton();
+    }
+
+    @FXML
+    void handleMenuRules() {
+        main.rulesWindow();
+    }
+
+    @FXML
+    void handleMenuExit() {
+        Platform.exit();
+        System.exit(0);
     }
 }

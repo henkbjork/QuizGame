@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public abstract class FileManager {
 
-    public static void saveToFile(int playerLabelIndex) {
+    public static void saveToFile() {
         File fileDir = new File("./SavedGames");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save file");
@@ -18,14 +18,14 @@ public abstract class FileManager {
         File savedFile = fileChooser.showSaveDialog(null);
 
         if(savedFile != null) {
-            writeToFile(savedFile, playerLabelIndex);
+            writeToFile(savedFile);
             System.out.println("File saved: " + savedFile.toString());
         } else {
             System.out.println("File save cancelled.");
         }
     }
 
-    private static void writeToFile(File savedFile, int playerLabelIndex) {
+    private static void writeToFile(File savedFile) {
         List<Object> objectsToSave = new ArrayList<>();
         objectsToSave.add(0, MultiPlayerGame.getCategory());
         objectsToSave.add(1, MultiPlayerGame.getDifficulty());
