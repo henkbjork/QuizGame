@@ -1,29 +1,24 @@
 package controller;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Popup;
-import javafx.stage.PopupWindow;
-import javafx.stage.Stage;
 import modell.FileManager;
 import modell.MultiPlayerGame;
-
-import java.util.Objects;
 
 public class StartController {
 
     @FXML private TextField playerNameField;
     @FXML private RadioButton easy, medium, hard, mixed, sport, geography, science;
     @FXML private ToggleGroup difficultyGroup, categoryGroup;
-    private Main main;
+    private WindowManager windowManager;
     private MultiPlayerGame multiPlayerGame = new MultiPlayerGame();
 
-    public void setMain(Main main) {
-        this.main = main;
+
+    public void setWindowManager(WindowManager windowManager) {
+        this.windowManager = windowManager;
     }
 
     @FXML
@@ -75,15 +70,19 @@ public class StartController {
 
     @FXML
     public void handleStartGameButton() {
-        main.gameWindow();
+        windowManager.gameWindow();
     }
 
     @FXML
     public void handleLoadGameButton() {
-        new MultiPlayerGame(Objects.requireNonNull(FileManager.loadFromFile()));
-        multiPlayerGame.setDifficulty(MultiPlayerGame.getDifficulty());
-        multiPlayerGame.setCategory(MultiPlayerGame.getCategory());
-        main.gameWindow();
+        if(FileManager.loadFromFile() == null) {
+            windowManager.gameWindow();
+        } else {
+            new MultiPlayerGame(FileManager.loadFromFile());
+            multiPlayerGame.setDifficulty(MultiPlayerGame.getDifficulty());
+            multiPlayerGame.setCategory(MultiPlayerGame.getCategory());
+            windowManager.gameWindow();
+        }
     }
 
     @FXML
@@ -93,7 +92,7 @@ public class StartController {
 
     @FXML
     void handleMenuRules() {
-        main.rulesWindow();
+        windowManager.rulesWindow();
     }
 
     @FXML

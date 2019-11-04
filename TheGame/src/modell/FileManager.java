@@ -29,12 +29,12 @@ public abstract class FileManager {
         List<Object> objectsToSave = new ArrayList<>();
         objectsToSave.add(0, MultiPlayerGame.getCategory());
         objectsToSave.add(1, MultiPlayerGame.getDifficulty());
-        System.out.println(MultiPlayerGame.getCategory());
-        System.out.println(MultiPlayerGame.getDifficulty());
+
         int numberOfPlayers = MultiPlayerGame.getQuizPlayers().size();
         for(int i=0; i<numberOfPlayers; i++) {
             objectsToSave.add(MultiPlayerGame.getQuizPlayers().get(i));
         }
+
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(savedFile))) {
             oos.writeObject(objectsToSave);
         } catch (IOException e) {
@@ -55,7 +55,6 @@ public abstract class FileManager {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("File opened");
         } else {
             System.out.println("File open cancelled");
         }
@@ -69,13 +68,12 @@ public abstract class FileManager {
             loadedFromFile = (ArrayList<Object>) ois.readObject();
             String category = (String) loadedFromFile.get(0);
             String difficulty = (String) loadedFromFile.get(1);
-            System.out.println(category);
-            System.out.println(difficulty);
+
             for(int i=2; i<loadedFromFile.size(); i++) {
                 players.add((QuizPlayer) loadedFromFile.get(i));
                 System.out.println(loadedFromFile.get(i));
             }
-            System.out.println("loaded file size: " + loadedFromFile.size());
+
             return new MultiPlayerGame(players, category, difficulty);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

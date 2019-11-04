@@ -13,11 +13,11 @@ import java.util.ResourceBundle;
 public class WinnerController implements Initializable {
 
     @FXML private Label winnerLabel;
-    private Main main;
+    private WindowManager windowManager;
 
-    public Main setMain(Main main) {
-        this.main = main;
-        return main;
+
+    public void setWindowManager(WindowManager windowManager) {
+        this.windowManager = windowManager;
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -31,7 +31,7 @@ public class WinnerController implements Initializable {
 
     @FXML
     public void handleNewGameButton() {
-        main.startWindow();
+        windowManager.startWindow();
     }
 
     @FXML

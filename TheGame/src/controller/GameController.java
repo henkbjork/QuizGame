@@ -2,10 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import modell.*;
 import java.net.URL;
@@ -15,7 +12,7 @@ public class GameController implements Initializable {
 
     @FXML private Label questionLabel, answerA, answerB, answerC, answerD, player1Label, player2Label, player3Label, player4Label, player5Label, player6Label;
     @FXML private Button saveButton, fiftyFiftyBtn, newQuestionButton;
-    private Main main;
+    private WindowManager windowManager;
     private static List<Label> playerLabels;
     private List<QuizPlayer> quizPlayers;
     private List<Label> answers;
@@ -23,13 +20,11 @@ public class GameController implements Initializable {
     private int playerLabelIndex = 0;
     private boolean fiftyFiftyButton = false;
 
-    public Main setMain(Main main) {
-        this.main = main;
-        return main;
+    public void setWindowManager(WindowManager windowManager) {
+        this.windowManager = windowManager;
     }
 
     @Override
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
         quizPlayers = MultiPlayerGame.getQuizPlayers();
         playerLabels = new ArrayList<>();
@@ -57,7 +52,7 @@ public class GameController implements Initializable {
     private void updateScore() {
         quizPlayers.get(playerLabelIndex).changeScore(fiftyFiftyButton);
         if(quizPlayers.get(playerLabelIndex).getScore() >= 50) {
-            main.winnerWindow();
+            windowManager.winnerWindow();
             disableButton();
         }
         setPlayerNameAndScore();
@@ -82,19 +77,23 @@ public class GameController implements Initializable {
         List<String> questionAndAnswer = QuestionAndAnswer.getQuestionAndAnswer();
         correctAnswer = questionAndAnswer.get(1);
         questionLabel.setText(questionAndAnswer.get(0));
+
+        displayPossibleAnswers(questionAndAnswer);
+    }
+
+    private void displayPossibleAnswers(List<String> questionAndAnswer) {
         Label[] labels = new Label[4];
         labels[0] = answerA;
         labels[1] = answerB;
         labels[2] = answerC;
         labels[3] = answerD;
-
         questionAndAnswer.remove(0); //deleting the question so just the answers remain in the list
         List<String> randomQuestion = shuffleArray(questionAndAnswer);
         for (int i = 0; i < labels.length; i++) {
             labels[i].setText(randomQuestion.get(i));
         }
-    }
 
+    }
     private void changePlayerTurn() {
         playerLabels.get(playerLabelIndex).setUnderline(true);
     }
@@ -172,7 +171,7 @@ public class GameController implements Initializable {
         alert.setHeaderText("If you quit without saving your game will be lost.");
         Optional<ButtonType> buttonType = alert.showAndWait();
         if (buttonType.get() == ButtonType.OK) {
-            main.startWindow();
+            windowManager.startWindow();
         }
     }
 
@@ -180,4 +179,20 @@ public class GameController implements Initializable {
     public void handleSaveButton() {
         FileManager.saveToFile();
     }
+
+    @FXML
+    public void handleMenuSaveGame() {
+        handleSaveButton();
+    }
+
+    @FXML
+    public void handleMenuExit() {
+        handleQuitButton();
+    }
+
+    @FXML
+    public void handleMenuRules() {
+        windowManager.rulesWindow();
+    }
+
 }

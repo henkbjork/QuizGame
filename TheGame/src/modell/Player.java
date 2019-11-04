@@ -28,12 +28,11 @@ public class Player implements Serializable {
         return score;
     }
 
-    public void changeScore() {
-        score += 1;
-    }
-
-    @Override
-    public String toString() {
-        return "Name: " + name + ", Score: " + score;
+    public void changeScore(boolean fiftyFiftyButton) {
+        if (fiftyFiftyButton) {
+            score += 5;
+        } else {
+            score += 10;
+        }
     }
 }

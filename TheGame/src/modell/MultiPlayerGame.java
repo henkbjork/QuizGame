@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiPlayerGame implements Serializable {
+public class MultiPlayerGame implements Game, Serializable {
 
     private static final long serialVersionUID = 3L;
     private static List<QuizPlayer> quizPlayers;
@@ -27,14 +27,17 @@ public class MultiPlayerGame implements Serializable {
         difficulty = loadedDifficulty;
     }
 
+    @Override
     public void addPlayer(String name) {
         quizPlayers.add(new QuizPlayer(name));
     }
 
+    @Override
     public void setDifficulty(String str) {
         difficulty = str;
     }
 
+    @Override
     public void setCategory(String str) {
         category = str;
     }

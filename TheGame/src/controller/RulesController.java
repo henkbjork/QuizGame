@@ -1,19 +1,22 @@
 package controller;
 
 import javafx.fxml.FXML;
+import modell.MultiPlayerGame;
 
 public class RulesController {
 
-    private Main main;
+    private WindowManager windowManager;
 
-    public Main setMain(Main main) {
-        this.main = main;
-        return main;
+    public void setWindowManager(WindowManager windowManager) {
+        this.windowManager = windowManager;
     }
 
     @FXML
     public void handleGoBackButton() {
-        main.startWindow();
+        if(MultiPlayerGame.getQuizPlayers().size() > 0) {
+            windowManager.gameWindow();
+        } else {
+            windowManager.startWindow();
+        }
     }
-
 }
