@@ -71,7 +71,6 @@ public abstract class FileManager {
 
             for(int i=2; i<loadedFromFile.size(); i++) {
                 players.add((QuizPlayer) loadedFromFile.get(i));
-                System.out.println(loadedFromFile.get(i));
             }
 
             return new MultiPlayerGame(players, category, difficulty);
@@ -80,4 +79,5 @@ public abstract class FileManager {
         }
         return null;
     }
+
 }

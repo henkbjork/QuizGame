@@ -6,7 +6,9 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import modell.FileManager;
+import modell.Game;
 import modell.MultiPlayerGame;
+import java.util.Objects;
 
 public class StartController {
 
@@ -14,7 +16,7 @@ public class StartController {
     @FXML private RadioButton easy, medium, hard, mixed, sport, geography, science;
     @FXML private ToggleGroup difficultyGroup, categoryGroup;
     private WindowManager windowManager;
-    private MultiPlayerGame multiPlayerGame = new MultiPlayerGame();
+    private Game multiPlayerGame = new MultiPlayerGame();
 
 
     public void setWindowManager(WindowManager windowManager) {
@@ -75,14 +77,10 @@ public class StartController {
 
     @FXML
     public void handleLoadGameButton() {
-        if(FileManager.loadFromFile() == null) {
-            windowManager.gameWindow();
-        } else {
-            new MultiPlayerGame(FileManager.loadFromFile());
-            multiPlayerGame.setDifficulty(MultiPlayerGame.getDifficulty());
-            multiPlayerGame.setCategory(MultiPlayerGame.getCategory());
-            windowManager.gameWindow();
-        }
+          Game loadedGame = new MultiPlayerGame(Objects.requireNonNull(FileManager.loadFromFile()));
+          loadedGame.setDifficulty(MultiPlayerGame.getDifficulty());
+          loadedGame.setCategory(MultiPlayerGame.getCategory());
+          windowManager.gameWindow();
     }
 
     @FXML

@@ -10,7 +10,10 @@ import java.io.IOException;
 public class WindowManager extends Application {
 
     private Stage primaryStage;
-    private AnchorPane pane;
+
+    public void run() {
+        launch(null);
+    }
 
     @Override
     public void start(Stage stage){
@@ -20,19 +23,11 @@ public class WindowManager extends Application {
         startWindow();
     }
 
-    public void run() {
-        launch(null);
-    }
-
     public void startWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/startView.fxml"));
-            pane = loader.load();
-            Scene scene = new Scene(pane);
+            FXMLLoader loader = loader(new FXMLLoader(Main.class.getResource("/view/startView.fxml")));
             StartController startController = loader.getController();
             startController.setWindowManager(this);
-            primaryStage.setScene(scene);
-            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,13 +35,9 @@ public class WindowManager extends Application {
 
     public void gameWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/gameView.fxml"));
-            pane = loader.load();
-            Scene scene = new Scene(pane);
+            FXMLLoader loader = loader(new FXMLLoader(Main.class.getResource("/view/gameView.fxml")));
             GameController gameController = loader.getController();
             gameController.setWindowManager(this);
-            primaryStage.setScene(scene);
-            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,13 +45,9 @@ public class WindowManager extends Application {
 
     public void winnerWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/winnerView.fxml"));
-            pane = loader.load();
-            Scene scene = new Scene(pane);
+            FXMLLoader loader = loader(new FXMLLoader(Main.class.getResource("/view/winnerView.fxml")));
             WinnerController winnerController = loader.getController();
             winnerController.setWindowManager(this);
-            primaryStage.setScene(scene);
-            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,15 +55,19 @@ public class WindowManager extends Application {
 
     public void rulesWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/rulesView.fxml"));
-            pane = loader.load();
-            Scene scene = new Scene(pane);
+            FXMLLoader loader = loader(new FXMLLoader(Main.class.getResource("/view/rulesView.fxml")));
             RulesController rulesController = loader.getController();
             rulesController.setWindowManager(this);
-            primaryStage.setScene(scene);
-            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private FXMLLoader loader(FXMLLoader loader) throws IOException {
+        AnchorPane pane = loader.load();
+        Scene scene = new Scene(pane);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        return loader;
     }
 }

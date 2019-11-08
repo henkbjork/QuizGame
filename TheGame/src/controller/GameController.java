@@ -17,8 +17,8 @@ public class GameController implements Initializable {
     private List<QuizPlayer> quizPlayers;
     private List<Label> answers;
     private String correctAnswer;
-    private int playerLabelIndex = 0;
-    private boolean fiftyFiftyButton = false;
+    private int playerLabelIndex;
+    private boolean fiftyFiftyButton;
 
     public void setWindowManager(WindowManager windowManager) {
         this.windowManager = windowManager;
@@ -39,6 +39,8 @@ public class GameController implements Initializable {
         answers.add(answerB);
         answers.add(answerC);
         answers.add(answerD);
+        playerLabelIndex = 0;
+        fiftyFiftyButton = false;
         setPlayerNameAndScore();
     }
 
@@ -81,23 +83,6 @@ public class GameController implements Initializable {
         displayPossibleAnswers(questionAndAnswer);
     }
 
-    private void displayPossibleAnswers(List<String> questionAndAnswer) {
-        Label[] labels = new Label[4];
-        labels[0] = answerA;
-        labels[1] = answerB;
-        labels[2] = answerC;
-        labels[3] = answerD;
-        questionAndAnswer.remove(0); //deleting the question so just the answers remain in the list
-        List<String> randomQuestion = shuffleArray(questionAndAnswer);
-        for (int i = 0; i < labels.length; i++) {
-            labels[i].setText(randomQuestion.get(i));
-        }
-
-    }
-    private void changePlayerTurn() {
-        playerLabels.get(playerLabelIndex).setUnderline(true);
-    }
-
     private void setStyleToNormal() {
         fiftyFiftyButton = false;
         for (Label answerLabel : answers) {
@@ -109,9 +94,28 @@ public class GameController implements Initializable {
         }
     }
 
+    private void displayPossibleAnswers(List<String> questionAndAnswer) {
+        Label[] labels = new Label[4];
+        labels[0] = answerA;
+        labels[1] = answerB;
+        labels[2] = answerC;
+        labels[3] = answerD;
+
+        questionAndAnswer.remove(0); //deleting the question so just the answers remain in the list
+
+        List<String> randomQuestion = shuffleArray(questionAndAnswer);
+        for (int i = 0; i < labels.length; i++) {
+            labels[i].setText(randomQuestion.get(i));
+        }
+    }
+
     private List<String> shuffleArray(List<String> arrList) {
         Collections.shuffle(arrList);
         return arrList;
+    }
+
+    private void changePlayerTurn() {
+        playerLabels.get(playerLabelIndex).setUnderline(true);
     }
 
     @FXML
